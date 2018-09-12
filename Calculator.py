@@ -59,6 +59,7 @@ x = (position_in_orbit[0]*((cos(w)*cos(N))-(sin(w)*cos(i)*sin(N))))-(position_in
 y = position_in_orbit[0]*((cos(w)*sin(N))+(sin(w)*cos(i)*cos(N)))+(position_in_orbit[1]*((cos(w)*cos(i)*cos(N))-(sin(w)*sin(N))))
 z = (position_in_orbit[0]*(sin(w)*sin(i)))+((position_in_orbit[1]*((cos(w)*sin(i)))))
 
+radius = sqrt(x*x+y*y+z*z)
 position = array([x,y,z])
 
 print("N: {}".format(N))
@@ -69,3 +70,4 @@ print("e: {}".format(e))
 print("M: {}".format(M))
 
 print("Position Vector: {}".format(position))
+print("Radius: {}".format(radius))
