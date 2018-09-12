@@ -8,11 +8,16 @@ from numpy import *
 #M = mean anomaly(0 at perihelion; increases uniformly with time)
 #a given in earth radii for the moon
 
+#d is the date
+#Day 0.0 occurs at 2000 Jan 0.0 UT
+
 #Paper with Math Here:
 ## https://downloads.rene-schwarz.com/download/M001-Keplerian_Orbit_Elements_to_Cartesian_State_Vectors.pdf
 
-#d is the date
-#Day 0.0 occurs at 2000 Jan 0.0 UT
+#Link to Accurate Code
+## https://space.stackexchange.com/questions/19322/converting-orbital-elements-to-cartesian-state-vectors
+
+
 
 def deg_normalizer(n):
     while n < 0 or n > 360:
