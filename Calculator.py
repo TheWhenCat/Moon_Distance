@@ -56,8 +56,6 @@ z = (position_in_orbit[0]*(sin(w)*sin(i)))+((position_in_orbit[1]*((cos(w)*sin(i
 
 position = array([x,y,z])
 
-print(position)
-
 print("N: {}".format(N))
 print("i: {}".format(i))
 print("w: {}".format(w))
@@ -65,6 +63,4 @@ print("a: {}".format(a))
 print("e: {}".format(e))
 print("M: {}".format(M))
 
-print("xE: {}".format(xh))
-print("yE: {}".format(yh))
-print("zE: {}".format(zh))
+print("Position Vector: {}".format(position))
