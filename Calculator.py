@@ -8,6 +8,9 @@ from numpy import *
 #M = mean anomaly(0 at perihelion; increases uniformly with time)
 #a given in earth radii for the moon
 
+#Paper with Math Here:
+## https://downloads.rene-schwarz.com/download/M001-Keplerian_Orbit_Elements_to_Cartesian_State_Vectors.pdf
+
 #d is the date
 #Day 0.0 occurs at 2000 Jan 0.0 UT
 
@@ -20,7 +23,7 @@ def deg_normalizer(n):
             n -= 360
     return n
 
-d = -354112
+d = -354112 #Apollo 11 Landing Date in 1969
 
 
 N = radians(deg_normalizer(125.1228 - (0.0529538083 * d)))
@@ -48,21 +51,12 @@ d = a*(1-e*cos(EA))
 position_in_orbit = array([d*cos(v), d*sin(v), float(0)]).T
 print("Angular Position in Orbit Before Transformation: {}".format(position_in_orbit))
 x = (position_in_orbit[0]*((cos(w)*cos(N))-(sin(w)*cos(i)*sin(N))))-(position_in_orbit[1]*((sin(w)*cos(N))+(cos(w)*cos(i)*sin(N))))
-y =
-z =
+y = position_in_orbit[0]*((cos(w)*sin(N))+(sin(w)*cos(i)*cos(N)))+(position_in_orbit[1]*((cos(w)*cos(i)*cos(N))-(sin(w)*sin(N))))
+z = (position_in_orbit[0]*(sin(w)*sin(i)))+((position_in_orbit[1]*((cos(w)*sin(i)))))
 
+position = array([x,y,z])
 
-#-----------------------------------
-#Online Code
-xv = a * ( cos(EA) - e )
-yv = a * ( sqrt(1.0 - e*e) * sin(EA) )
-
-v = atan2( yv, xv )
-r = sqrt( xv*xv + yv*yv )
-
-xh = r * ( cos(N) * cos(v+w) - sin(N) * sin(v+w) * cos(i) )
-yh = r * ( sin(N) * cos(v+w) + cos(N) * sin(v+w) * cos(i) )
-zh = r * ( sin(v+w) * sin(i) )
+print(position)
 
 print("N: {}".format(N))
 print("i: {}".format(i))
