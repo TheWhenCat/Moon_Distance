@@ -49,7 +49,8 @@ def deg_normalizer(n):
     return n
 
 d = -354112 #Apollo 11 Landing Date in 1969
-
+seconds = d*24*60*60
+print("Seconds: {}".format(seconds))
 
 N = radians(deg_normalizer(125.1228 - (0.0529538083 * d)))
 i = 5.1454
@@ -97,9 +98,15 @@ x_ECEF = x_ECI*(cos(Longitude)*cos(Latitude))
 y_ECEF = y_ECI*(cos(Longitude)*sin(Latitude))
 z_ECEF = z_ECI*(sin(Longitude))
 
-radius_ECEF = sqrt(x_ECEF*x_ECEF+y_ECI*y_ECI+z_ECI*z_ECI)
-position_ECEF = array([x_ECEF, y_ECEF, z_ECEF])
+radius_ECEF = sqrt(x_ECEF*x_ECEF+y_ECI*y_ECI+z_ECI*z_ECI)*6731
+position_ECEF = 1000*6371*array([x_ECEF, y_ECEF, z_ECEF])
 
-print("Position Vector ECEF Earth to ECI Moon: {}".format(position_ECEF))
+print("Position Vector Earth Radii ECEF Earth to ECI Moon: {}".format(position_ECEF))
 print("Radius ECEF Earth to ECI Moon: {}".format(radius_ECEF))
+print("Position Vector km ECEF Earth to ECI Moon: {}".format(position_ECEF))
 
+time_in_meter = seconds*3*10**8
+print("Time in Second Meters: {}".format(time_in_meter))
+
+distance = ((position_ECEF.dot(position_ECEF)*1000)-(time_in_meter**2))
+print("Distance in Space-Time: {}".format(distance**0.5))
